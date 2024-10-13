@@ -1,0 +1,359 @@
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role='list'],
+ol[role='list'],
+ul,
+ol {
+  list-style: none;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+a{
+  text-decoration: none;
+}
+
+/* Make images easier to work with */
+img,
+picture,
+svg {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+   scroll-behavior: auto;
+  }
+  
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* variables */
+
+:root{
+  /* Primary */
+--Bright-Blue: hsl(220, 98%, 61%);
+--Check-Background: linear-gradient hsl(192, 100%, 67%) to hsl(280, 87%, 65%);
+
+/* Neutral */
+--Very-Light-Gray: hsl(0, 0%, 98%);
+--Very-Light-Grayish-Blue: hsl(236, 33%, 92%);
+--Light-Grayish-Blue: hsl(233, 11%, 84%);
+--Dark-Grayish-Blue: hsl(236, 9%, 61%);
+--Very-Dark-Grayish-Blue: hsl(235, 19%, 35%);
+
+/* Dark Theme */
+--Very-Dark-Blue: hsl(235, 21%, 11%);
+--Very-Dark-Desaturated-Blue: hsl(235, 24%, 19%);
+--Light-Grayish-Blue: hsl(234, 39%, 85%);
+--Light-Grayish-Blue-hover-effects: hsl(236, 33%, 92%);
+--Dark-Grayish-Blue2: hsl(234, 11%, 52%);
+--Very-Dark-Grayish-Blue: hsl(233, 14%, 35%);
+--Very-Dark-Grayish-Blue2: hsl(237, 14%, 26%);
+}
+
+/* body */
+body{
+  font-family: "Josefin Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 1.1rem;
+  background-image: url(images/bg-desktop-dark.jpg);
+  background-repeat: no-repeat;
+  background-position: top;
+  background-size: contain;
+  background-color: var(--Very-Dark-Blue);
+}
+.container{
+  width: 100%;
+  max-width: 1440px;
+  height: 100vh;
+  margin: 0 auto;
+/*   display: grid;
+  place-items: center; */
+}
+
+/* APPLICATION STARTS HERE */
+.todo-app{
+  width: 40%;
+  height: auto;
+  margin: 0 auto;
+  padding: 80px 0;
+}
+/* task header */
+.todo-header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  letter-spacing: 0.6rem;
+  word-spacing: -1.2rem;
+  font-size: 1.4rem;
+  margin-bottom: 1.5rem;
+}
+.heading{
+  color: var(--Very-Light-Gray);
+  text-transform: uppercase;
+}
+.mode-toggler-btns{
+  display: block;
+}
+.dark-mode-icon{
+  display: none;
+}
+
+/* light mode */
+.light-mode{
+  background-color: var(--Very-Light-Gray);
+  background-image: url(images/bg-desktop-light.jpg);
+  background-repeat: no-repeat;
+  background-position: top;
+  background-size: contain;
+}
+/* .add-light-mode{
+  margin-bottom: 1.2rem;
+  width: 100%;
+  height: 3rem;
+  background-color: var(--Very-Light-Gray);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1rem;
+  border-radius: 0.3rem;
+}
+.add-light-mode .toggle{
+  width: 20px;
+  height: 20px;
+  background-color: transparent;
+  border: 1.5px solid var(--Light-Grayish-Blue);
+  border-radius: 50%;
+  cursor: pointer;
+}
+.tasks-light-mode{
+  background-color: var(--Very-Light-Gray);
+  border-radius: 0.3rem;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0px 10px 50px -32px;
+}
+.tasks-light-mode .task-row .task-toggle{
+  width: 20px;
+  height: 20px;
+  background-color: transparent;
+  border: 1.5px solid var(--Light-Grayish-Blue);
+  border-radius: 50%;
+  cursor: pointer;
+}
+.tasks-light-mode .task-row{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1rem;
+  width: 100%;
+  height: 3rem;
+  border-bottom: 1.5px solid var(--Very-Light-Grayish-Blue);
+}
+.tasks-light-mode .task-name{
+  flex: 1;
+  color: var(--Very-Dark-Grayish-Blue);
+}
+.line-through{
+  text-decoration: line-through;
+  text-decoration-thickness: 0.1rem;
+  text-decoration-color: var(--Very-Dark-Grayish-Blue);
+} */
+/* light mode ends here */
+/* ////////////////////////////////// */
+
+/* add new task */
+.add-task-bar{
+  margin-bottom: 1.2rem;
+  width: 100%;
+  height: 3rem;
+  background-color: var(--Very-Dark-Desaturated-Blue);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1rem;
+  border-radius: 0.3rem;
+}
+/* add task checkbox circle */
+.checkbox{
+  display: none;
+}
+.checkbox:checked .toggle{
+  background: var(--Check-Background);
+  background-image: url(images/icon-check.svg);
+}
+.add-task-circle{
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin: 0 auto;
+}
+.toggle{
+  width: 20px;
+  height: 20px;
+  background-color: transparent;
+  border: 1.5px solid var(--Very-Dark-Grayish-Blue);
+  border-radius: 50%;
+  cursor: pointer;
+}
+.input-value{
+  flex: 1;
+  background-color: transparent;
+  border: none;
+}
+.input-value:focus{
+  border: none;
+  outline: none;
+}
+.input-value[placeholder]{
+  color: var(--Very-Dark-Grayish-Blue);  
+}
+.fa-plus{
+  color: var(--Dark-Grayish-Blue);
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+
+/* task row spacings */
+.task-name,
+.input-value{
+  margin-left: 1.3rem;
+}
+
+/* all tasks */
+.task-name,
+.task-checkbox,
+.checkbox-circle{
+  cursor: pointer;
+}
+.all-tasks{
+  background-color: var(--Very-Dark-Desaturated-Blue);
+  border-radius: 0.3rem;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0px 10px 50px -10px;
+}
+.task-row{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1rem;
+  width: 100%;
+  height: 3rem;
+  border-bottom: 0.1rem solid var(--Very-Dark-Grayish-Blue2);
+}
+.task-row:last-child{
+  border-bottom: 0;
+}
+.task-name{
+  flex: 1;
+  color: var(--Light-Grayish-Blue);
+}
+.line-through{
+  text-decoration: line-through;
+  text-decoration-thickness: 0.1rem;
+  text-decoration-color: var(--Dark-Grayish-Blue);
+  color: var(--Dark-Grayish-Blue);
+}
+.delete-task{
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+}
+
+/* task row checkbox styling */
+.checkbox-circle{
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin: 0 auto;
+}
+.task-checkbox{
+  display: none;
+}
+/* .task-checkbox[checked] .task-toggle{
+
+} */
+.task-toggle{
+  width: 20px;
+  height: 20px;
+  background-color: transparent;
+  border: 1.5px solid var(--Very-Dark-Grayish-Blue);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* mobile view */
+@media (max-width: 600px){
+  body{
+    background-image: url(images/bg-mobile-dark.jpg);
+    background-repeat: no-repeat;
+    background-position: top;
+    background-size: contain;
+  }
+  .container{
+    width: 90%;
+  }
+.todo-app{
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  padding: 60px 0;
+}
+/* task header */
+.heading{
+  color: var(--Very-Light-Gray);
+  text-transform: uppercase;
+}
+}
