@@ -83,6 +83,25 @@ let addNewTask = ()=>{
         </li>
         `;
         taskParent.prepend(newTaskRow);
+
+        if(taskTerm.length == 0){
+            taskParent.removeChild(newTaskRow);
+        }
     })
 }
 addNewTask();
+
+
+
+/* dragging and dropping  to reorder the tasks */
+taskRows.forEach((row)=>{
+    /* drag start */
+    row.addEventListener('dragstart', (event)=>{
+    row.classList.add('dragging');
+    })
+
+    /* drag end */
+    row.addEventListener('dragend', (event)=>{
+    row.classList.remove('dragging');
+    })
+})

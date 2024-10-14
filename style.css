@@ -84,10 +84,12 @@ select {
 --Very-Dark-Blue: hsl(235, 21%, 11%);
 --Very-Dark-Desaturated-Blue: hsl(235, 24%, 19%);
 --Light-Grayish-Blue: hsl(234, 39%, 85%);
+--Light-Grayish-Blue2: hsl(234, 39%, 85%);
 --Light-Grayish-Blue-hover-effects: hsl(236, 33%, 92%);
 --Dark-Grayish-Blue2: hsl(234, 11%, 52%);
 --Very-Dark-Grayish-Blue: hsl(233, 14%, 35%);
 --Very-Dark-Grayish-Blue2: hsl(237, 14%, 26%);
+--Very-Dark-Grayish-Blue3: hsl(237, 14%, 26%);
 }
 
 /* body */
@@ -148,7 +150,7 @@ body{
   background-position: top;
   background-size: contain;
 }
-/* .add-light-mode{
+.add-light-mode{
   margin-bottom: 1.2rem;
   width: 100%;
   height: 3rem;
@@ -199,7 +201,7 @@ body{
   text-decoration: line-through;
   text-decoration-thickness: 0.1rem;
   text-decoration-color: var(--Very-Dark-Grayish-Blue);
-} */
+}
 /* light mode ends here */
 /* ////////////////////////////////// */
 
@@ -279,7 +281,15 @@ body{
   flex-direction: column;
   box-shadow: 0px 10px 50px -10px;
 }
-.task-row{
+.all-tasks .dragging{
+  background-color: var(--Very-Dark-Grayish-Blue3);
+  box-shadow: 5px 5px 20px -10px;
+}
+.tasks-light-mode .dragging{
+  background-color: var(--Light-Grayish-Blue-hover-effects);
+  box-shadow: 5px 5px 20px -10px;
+}
+.all-tasks .task-row{
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -291,11 +301,11 @@ body{
 .task-row:last-child{
   border-bottom: 0;
 }
-.task-name{
+.all-tasks .task-name{
   flex: 1;
   color: var(--Light-Grayish-Blue);
 }
-.line-through{
+.all-tasks .line-through{
   text-decoration: line-through;
   text-decoration-thickness: 0.1rem;
   text-decoration-color: var(--Dark-Grayish-Blue);
@@ -305,6 +315,10 @@ body{
   width: 15px;
   height: 15px;
   cursor: pointer;
+  display: none;
+}
+.task-row:hover .delete-task{
+  display: block;
 }
 
 /* task row checkbox styling */
@@ -342,6 +356,12 @@ body{
     background-position: top;
     background-size: contain;
   }
+  .light-mode{
+    background-image: url(images/bg-mobile-light.jpg);
+    background-repeat: no-repeat;
+    background-position: top;
+    background-size: contain;
+  }
   .container{
     width: 90%;
   }
@@ -355,5 +375,13 @@ body{
 .heading{
   color: var(--Very-Light-Gray);
   text-transform: uppercase;
+}
+.add-task-bar,
+.add-light-mode{
+  margin-bottom: 1.9rem;
+}
+.all-tasks .task-row,
+.tasks-light-mode .task-row{
+  height: 3.5rem;
 }
 }
