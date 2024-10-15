@@ -71,7 +71,7 @@ select {
 :root{
   /* Primary */
 --Bright-Blue: hsl(220, 98%, 61%);
---Check-Background: linear-gradient hsl(192, 100%, 67%) to hsl(280, 87%, 65%);
+--Check-Background: linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
 
 /* Neutral */
 --Very-Light-Gray: hsl(0, 0%, 98%);
@@ -197,10 +197,11 @@ body{
   flex: 1;
   color: var(--Very-Dark-Grayish-Blue);
 }
-.line-through{
+.tasks-light-mode .line-through{
   text-decoration: line-through;
   text-decoration-thickness: 0.1rem;
-  text-decoration-color: var(--Very-Dark-Grayish-Blue);
+  text-decoration-color: var(--Dark-Grayish-Blue2);
+  color: var(--Dark-Grayish-Blue2);
 }
 /* light mode ends here */
 /* ////////////////////////////////// */
@@ -346,6 +347,29 @@ body{
   border: 1.5px solid var(--Very-Dark-Grayish-Blue);
   border-radius: 50%;
   cursor: pointer;
+}
+
+.check-bg{
+  background: var(--Check-Background);
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  margin: auto;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.check-bg::after{
+  content: "";
+  width: 12px;
+  height: 12px;
+  background-image: url(images/icon-check.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  position: absolute;
+  margin: auto;
 }
 
 /* mobile view */

@@ -56,15 +56,33 @@ deleteTask();
 deleteTask(); */
 
 /* check completed tasks function */
-let completedTasks = ()=>{
+/* let completedTasks = ()=>{
         allTasks.addEventListener('click', (event)=>{
             let clicked = event.target;
-            if(clicked.className == 'task-name'){
+            if(clicked.classList.contains('task-name')){
                 clicked.classList.toggle('line-through');
             }
         })
 }
-completedTasks();
+completedTasks(); */
+
+/* check checkboxes */
+let completed = ()=>{
+    allTasks.addEventListener('click', (event)=>{
+        let clicked = event.target;
+        let clickedParent = clicked.parentElement;
+        let clickedGrandParent = clickedParent.parentElement;
+        console.log(clicked);
+        let taskName = clickedGrandParent.querySelector('.task-name');
+
+        if(clicked.classList.contains('task-toggle')){
+            clicked.classList.toggle('check-bg');
+            taskName.classList.toggle('line-through');
+        }
+    })
+}
+completed();
+
 
 /* add a new task function */
 let addNewTask = ()=>{
@@ -105,3 +123,14 @@ taskRows.forEach((row)=>{
     row.classList.remove('dragging');
     })
 })
+
+/* const sortableTasks = document.querySelector('.allTasks');
+sortableTasks.addEventListener('dragover', (event)=>{
+    let draggingItem = sortableTasks.querySelector('.dragging');
+    const siblings = [...sortableTasks.querySelectorAll('.task-row:not(.dragging)')];
+    let nextSibling = siblings.find((sibling)=>{
+        return e.clientY <= sibling.offsetTop + sibling.offsetHeight / 2;
+    });
+
+    sortableTasks.insertBefore(draggingItem, nextSibling);
+}) */
