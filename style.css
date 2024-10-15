@@ -116,7 +116,7 @@ body{
 
 /* APPLICATION STARTS HERE */
 .todo-app{
-  width: 40%;
+  max-width: 550px;
   height: auto;
   margin: 0 auto;
   padding: 80px 0;
@@ -423,12 +423,7 @@ body{
 .item-filters span:hover{
   cursor: pointer;
   color: var(--Light-Grayish-Blue);
-}
-.light-footer .clear-completed:hover
-.light-footer .item-filters span:hover{
-  cursor: pointer;
-  color: red;
-}
+} 
 .active-filter{
   color: var(--Bright-Blue);
   font-weight: 600;
@@ -481,3 +476,15 @@ body{
   height: 3.5rem;
 }
 }
+/* media query for tablets */
+/* @media(max-width: 48em){
+  .container{
+  width: 100%;
+  }
+.todo-app{
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  padding: 60px 0;
+}
+} */
