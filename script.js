@@ -39,32 +39,10 @@ let deleteTask = ()=>{
                 const taskRow = clicked.parentElement;
                 allTasks.removeChild(taskRow);
             }
+            itemsLeft();
         })
 }
 deleteTask();
-
-/* let deleteTask = ()=>{
-    deleteBtns.forEach((deleteBtn)=>{
-        deleteBtn.addEventListener('click', (event)=>{
-            let btn = event.target;
-            let taskRow = btn.parentElement;
-            let taskWrapper = btn.parentElement.parentElement;
-            taskWrapper.removeChild(taskRow);
-        })
-    })
-}
-deleteTask(); */
-
-/* check completed tasks function */
-/* let completedTasks = ()=>{
-        allTasks.addEventListener('click', (event)=>{
-            let clicked = event.target;
-            if(clicked.classList.contains('task-name')){
-                clicked.classList.toggle('line-through');
-            }
-        })
-}
-completedTasks(); */
 
 /* check checkboxes */
 let completed = ()=>{
@@ -72,13 +50,13 @@ let completed = ()=>{
         let clicked = event.target;
         let clickedParent = clicked.parentElement;
         let clickedGrandParent = clickedParent.parentElement;
-        console.log(clicked);
         let taskName = clickedGrandParent.querySelector('.task-name');
 
         if(clicked.classList.contains('task-toggle')){
             clicked.classList.toggle('check-bg');
             taskName.classList.toggle('line-through');
         }
+        itemsLeft();
     })
 }
 completed();
@@ -105,10 +83,35 @@ let addNewTask = ()=>{
         if(taskTerm.length == 0){
             taskParent.removeChild(newTaskRow);
         }
+        itemsLeft();
     })
 }
 addNewTask();
 
+/* tasks footer functions */
+/* items left function */
+let itemsLeft = ()=>{
+    let count = 0;
+    let itemCount = document.querySelector('.item-count');
+    let checkBoxes = allTasks.querySelectorAll('.task-toggle');
+    let checkedBoxes = document.querySelectorAll('.check-bg');
+    count = checkBoxes.length - checkedBoxes.length;
+    itemCount.innerText = `${count} items left`
+}
+itemsLeft();
+
+/* item filters functions */
+let itemFilters = document.querySelectorAll('.item-filters span');
+itemFilters.forEach((item)=>{
+    item.addEventListener('click', ()=>{
+        item.classList.add('active-filter');
+        itemFilters.forEach((f)=>{
+            if(f !== item){
+                f.classList.remove('active-filter');
+            }
+        })
+    })
+})
 
 
 /* dragging and dropping  to reorder the tasks */

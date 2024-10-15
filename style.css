@@ -137,6 +137,7 @@ body{
 }
 .mode-toggler-btns{
   display: block;
+  cursor: pointer;
 }
 .dark-mode-icon{
   display: none;
@@ -150,7 +151,7 @@ body{
   background-position: top;
   background-size: contain;
 }
-.add-light-mode{
+.add-bar-light{
   margin-bottom: 1.2rem;
   width: 100%;
   height: 3rem;
@@ -160,14 +161,18 @@ body{
   justify-content: space-between;
   padding: 0 1rem;
   border-radius: 0.3rem;
+  box-shadow: 0px 10px 10px -15px;
 }
-.add-light-mode .toggle{
+.add-bar-light .toggle{
   width: 20px;
   height: 20px;
   background-color: transparent;
   border: 1.5px solid var(--Light-Grayish-Blue);
   border-radius: 50%;
   cursor: pointer;
+}
+.add-bar-light .input-value::placeholder{
+  color: var(--Dark-Grayish-Blue);
 }
 .tasks-light-mode{
   background-color: var(--Very-Light-Gray);
@@ -222,10 +227,6 @@ body{
 .checkbox{
   display: none;
 }
-.checkbox:checked .toggle{
-  background: var(--Check-Background);
-  background-image: url(images/icon-check.svg);
-}
 .add-task-circle{
   width: 20px;
   height: 20px;
@@ -237,7 +238,7 @@ body{
   cursor: pointer;
   margin: 0 auto;
 }
-.toggle{
+.add-task-bar .toggle{
   width: 20px;
   height: 20px;
   background-color: transparent;
@@ -322,7 +323,7 @@ body{
   display: block;
 }
 
-/* task row checkbox styling */
+/* Checkboxes and their hover states */
 .checkbox-circle{
   width: 20px;
   height: 20px;
@@ -337,18 +338,42 @@ body{
 .task-checkbox{
   display: none;
 }
-/* .task-checkbox[checked] .task-toggle{
-
-} */
-.task-toggle{
+.task-toggle:not(.check-bg){
   width: 20px;
   height: 20px;
   background-color: transparent;
-  border: 1.5px solid var(--Very-Dark-Grayish-Blue);
+  border: 1.6px solid var(--Very-Dark-Grayish-Blue);
   border-radius: 50%;
   cursor: pointer;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+/* .task-toggle:not(.check-bg)::after{
+  content: "";
+  background: var(--Check-Background);
+  background-color: var(--Very-Dark-Desaturated-Blue);
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  margin: auto;
+  z-index: -1;
+}
+.task-toggle:not(.check-bg):hover{
+  background-color: var(--Very-Dark-Desaturated-Blue);
+  width: 10px;
+  height: 10px;
+}
+.task-toggle:not(.check-bg):hover .task-toggle:not(.check-bg)::after{
+  z-index: -1;
+  background-color: var(--Very-Dark-Desaturated-Blue);
+}
+ */
+/* checkboxes hover states ends here */
 
+/* checkbox custom */
 .check-bg{
   background: var(--Check-Background);
   width: 100%;
@@ -371,6 +396,53 @@ body{
   position: absolute;
   margin: auto;
 }
+
+/* items footer */
+.items-footer{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 3rem;
+  padding: 0 1rem;
+  color: var(--Dark-Grayish-Blue2);
+  font-size: 0.8rem;
+}
+.item-filters{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin: 0 auto;
+}
+.item-filters,
+.clear-completed{
+  font-weight: 500;
+}
+.clear-completed:hover,
+.item-filters span:hover{
+  cursor: pointer;
+  color: var(--Light-Grayish-Blue);
+}
+.light-footer .clear-completed:hover
+.light-footer .item-filters span:hover{
+  cursor: pointer;
+  color: red;
+}
+.active-filter{
+  color: var(--Bright-Blue);
+  font-weight: 600;
+}
+.item-filters span:active{
+  color: var(--Bright-Blue);
+}
+.drag-and-drop{
+  text-align: center;
+  margin-top: 2.8rem;
+  color: var(--Dark-Grayish-Blue2);
+  font-size: 0.8rem;
+}
+
 
 /* mobile view */
 @media (max-width: 600px){
