@@ -181,11 +181,11 @@ body{
   flex-direction: column;
   box-shadow: 0px 10px 50px -32px;
 }
-.tasks-light-mode .task-row .task-toggle{
+.tasks-light-mode:not(.all-tasks) .task-row .task-toggle{
   width: 20px;
   height: 20px;
   background-color: transparent;
-  border: 1.5px solid var(--Light-Grayish-Blue);
+  border: 1.5px solid var(--Light-Grayish-Blue) !important;
   border-radius: 50%;
   cursor: pointer;
 }
@@ -342,7 +342,7 @@ body{
   width: 20px;
   height: 20px;
   background-color: transparent;
-  border: 1.6px solid var(--Very-Dark-Grayish-Blue);
+  border: 1.6px solid var(--Very-Dark-Grayish-Blue) !important;
   border-radius: 50%;
   cursor: pointer;
   position: relative;
@@ -350,7 +350,7 @@ body{
   align-items: center;
   justify-content: center;
 }
-/* .task-toggle:not(.check-bg)::after{
+.task-toggle:not(.check-bg)::after{
   content: "";
   background: var(--Check-Background);
   background-color: var(--Very-Dark-Desaturated-Blue);
@@ -370,7 +370,7 @@ body{
   z-index: -1;
   background-color: var(--Very-Dark-Desaturated-Blue);
 }
- */
+
 /* checkboxes hover states ends here */
 
 /* checkbox custom */
@@ -475,6 +475,11 @@ body{
 .tasks-light-mode .task-row{
   height: 3.5rem;
 }
+
+.item-filters span:hover{
+  cursor: pointer;
+  color: var(--Bright-Blue);
+} 
 }
 /* media query for tablets */
 /* @media(max-width: 48em){

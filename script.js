@@ -10,6 +10,11 @@ let allTasks = document.querySelector('.all-tasks');
 let taskRows = document.querySelectorAll('.task-row');
 let taskNames = document.querySelectorAll('.task-name');
 let deleteBtns = document.querySelectorAll('.delete-task');
+let allBtn = document.querySelector('.filter-all');
+let activeBtn = document.querySelector('.filter-active');
+let completedBtn = document.querySelector('.filter-completed');
+
+
 
 /* app mode toggling */
 lightMode.addEventListener('click', ()=>{
@@ -33,14 +38,14 @@ darkMode.addEventListener('click', ()=>{
 
 /* delete task function */
 let deleteTask = ()=>{
-        allTasks.addEventListener('click', (event)=>{
-            let clicked = event.target;
-            if(clicked.classList.contains('delete-task')){
-                const taskRow = clicked.parentElement;
-                allTasks.removeChild(taskRow);
-            }
-            itemsLeft();
-        })
+    allTasks.addEventListener('click', (event)=>{
+        let clicked = event.target;
+        if(clicked.classList.contains('delete-task')){
+            const taskRow = clicked.parentElement;
+            allTasks.removeChild(taskRow);
+        }
+        itemsLeft();
+    })
 }
 deleteTask();
 
@@ -55,8 +60,11 @@ let completed = ()=>{
         if(clicked.classList.contains('task-toggle')){
             clicked.classList.toggle('check-bg');
             taskName.classList.toggle('line-through');
+            clickedGrandParent.classList.add('checked');
         }
         itemsLeft();
+        clearCompleted();
+        allFilters();
     })
 }
 completed();
@@ -84,12 +92,14 @@ let addNewTask = ()=>{
             taskParent.removeChild(newTaskRow);
         }
         itemsLeft();
+        clearCompleted();
+        allFilters();
     })
 }
 addNewTask();
 
 /* tasks footer functions */
-/* items left function */
+/* items left function */ 
 let itemsLeft = ()=>{
     let count = 0;
     let itemCount = document.querySelector('.item-count');
@@ -100,7 +110,7 @@ let itemsLeft = ()=>{
 }
 itemsLeft();
 
-/* item filters functions */
+/* item filter Buttons functions */
 let itemFilters = document.querySelectorAll('.item-filters span');
 itemFilters.forEach((item)=>{
     item.addEventListener('click', ()=>{
@@ -112,6 +122,55 @@ itemFilters.forEach((item)=>{
         })
     })
 })
+
+/* clear completed function */
+let clearCompleted = ()=>{
+    let checkedTasks = document.querySelectorAll('.check-bg');
+    let clearBtn = document.querySelector('.clear-completed');
+    checkedTasks.forEach((checked)=>{
+        let checkedRow = checked.parentElement.parentElement;
+        let checkedRowParent = checked.parentElement.parentElement.parentElement;
+        clearBtn.addEventListener('click', ()=>{
+            checkedRowParent.removeChild(checkedRow);
+        })
+    })  
+}
+
+/* filter by completed only */
+let allFilters = ()=>{
+    allTasks.addEventListener('click', (event)=>{
+        let clickedBtn = event.target;
+        let btnRow = clickedBtn.parentElement.parentElement;
+        let mainParent = btnRow.parentElement;
+        let allRows = mainParent.querySelectorAll('.task-row');
+        let checkedRows = mainParent.querySelectorAll('.checked');
+        let uncheckedRows = mainParent.querySelectorAll('.task-row:not(.checked)');
+        /* active tasks */
+        if(clickedBtn.classList.contains('filter-active')){
+            checkedRows.forEach((row)=>{
+                row.style.display = "none";
+            })
+            uncheckedRows.forEach((row)=>{
+                row.style.display = "flex";
+            })
+        }
+        /* completed tasks */
+        if(clickedBtn.classList.contains('filter-completed')){
+            uncheckedRows.forEach((row)=>{
+                row.style.display = "none";
+            })
+            checkedRows.forEach((row)=>{
+                row.style.display = "flex";
+            })
+        }
+        /* all tasks */
+        if(clickedBtn.classList.contains('filter-all')){
+            allRows.forEach((row)=>{
+                row.style.display = "flex";
+            })
+        }
+    })
+}
 
 
 /* dragging and dropping  to reorder the tasks */
