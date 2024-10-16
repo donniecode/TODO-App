@@ -283,9 +283,9 @@ body{
   flex-direction: column;
   box-shadow: 0px 10px 50px -10px;
 }
-.all-tasks:not(.tasks-light-mode) .dragging{
+.all-tasks .dragging{
   background-color: var(--Very-Dark-Grayish-Blue3);
-  box-shadow: 5px 5px 20px -10px;
+  box-shadow: 5px 5px 20px -10px
 }
 .tasks-light-mode:not(.all-tasks) .dragging{
   background-color: var(--Light-Grayish-Blue-hover-effects);
@@ -477,6 +477,25 @@ body{
 .item-filters span:hover{
   cursor: pointer;
   color: var(--Bright-Blue);
+}
+
+.task-toggle:not(.check-bg)::after{
+  content: "";
+  background: var(--Check-Background);
+  background-color: var(--Very-Dark-Desaturated-Blue);
+  border-radius: 50%;
+  width: 8px;
+  height: 8px;
+  position: absolute;
+  margin: auto;
+  z-index: -1;
+  display: none;
+}
+.task-toggle:not(.check-bg):hover{
+  z-index: 1;
+  background-color: var(--Very-Dark-Desaturated-Blue);
+  width: 20px;
+  height: 20px;
 } 
 }
 /* media query for tablets */

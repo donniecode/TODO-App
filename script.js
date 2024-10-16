@@ -98,6 +98,7 @@ let addNewTask = ()=>{
         itemsLeft();
         clearCompleted();
         allFilters();
+        initSortableList();
     })
 }
 addNewTask();
@@ -179,25 +180,28 @@ let allFilters = ()=>{
 
 
 /* dragging and dropping  to reorder the tasks */
-taskRows.forEach((row)=>{
-    /* drag start */
-    row.addEventListener('dragstart', (event)=>{
-    row.classList.add('dragging');
-    })
-
-    /* drag end */
-    row.addEventListener('dragend', (event)=>{
-    row.classList.remove('dragging');
-    })
-})
-
-/* const sortableTasks = document.querySelector('.allTasks');
-sortableTasks.addEventListener('dragover', (event)=>{
-    let draggingItem = sortableTasks.querySelector('.dragging');
-    const siblings = [...sortableTasks.querySelectorAll('.task-row:not(.dragging)')];
-    let nextSibling = siblings.find((sibling)=>{
-        return e.clientY <= sibling.offsetTop + sibling.offsetHeight / 2;
+let dragItems = ()=>{
+    taskRows.forEach((row)=>{
+        /* drag start */
+        row.addEventListener('dragstart', (event)=>{
+        row.classList.add('dragging');
+        })
+    
+        /* drag end */
+        row.addEventListener('dragend', (event)=>{
+        row.classList.remove('dragging');
+        })
     });
+}
+dragItems();
 
-    sortableTasks.insertBefore(draggingItem, nextSibling);
-}) */
+    let initSortableList = (e)=>{
+        let draggingItem = allTasks.querySelector('.dragging');
+        const siblings = [...allTasks.querySelectorAll('.task-row:not(.dragging)')];
+        let nextSibling = siblings.find((sibling) => {
+            return e.clientY <= sibling.offsetTop + sibling.offsetHeight / 2;
+    })
+    console.log(nextSibling);
+    allTasks.insertBefore(draggingItem, nextSibling);
+}
+allTasks.addEventListener('dragover', initSortableList);
