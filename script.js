@@ -71,6 +71,10 @@ completed();
 
 
 /* add a new task function */
+function resetValue (){
+    let taskValue = document.querySelector('.input-value');
+    taskValue.value = '';
+}
 let addNewTask = ()=>{
     addTaskBtn.addEventListener('click', (event)=>{
         let taskTerm = input.value;
@@ -87,7 +91,7 @@ let addNewTask = ()=>{
         </li>
         `;
         taskParent.prepend(newTaskRow);
-
+        resetValue();
         if(taskTerm.length == 0){
             taskParent.removeChild(newTaskRow);
         }
@@ -169,6 +173,7 @@ let allFilters = ()=>{
                 row.style.display = "flex";
             })
         }
+
     })
 }
 
